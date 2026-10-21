@@ -1,0 +1,247 @@
+:host {
+  display: block;
+}
+
+.login {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.login__brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  background: var(--color-surface-deep);
+  color: var(--color-text);
+  overflow: hidden;
+
+  @media (max-width: 860px) {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -8rem;
+    bottom: -8rem;
+    width: 22rem;
+    height: 22rem;
+    border-radius: 50%;
+    border: 1px solid rgb(198 240 78 / 0.14);
+    box-shadow: 0 0 0 3rem rgb(198 240 78 / 0.03);
+  }
+}
+
+.login__brand-kicker {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.login__brand-title {
+  margin: auto 0;
+  max-width: 14ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  font-weight: 500;
+  line-height: 1.02;
+
+  em {
+    color: var(--color-accent);
+    font-style: italic;
+  }
+}
+
+.login__brand-note {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.login__main {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.login__panel {
+  width: 100%;
+  max-width: 26rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.login__header {
+  margin-bottom: 1.75rem;
+}
+
+.login__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.login__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.login__subtitle {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--color-danger) 30%, transparent);
+  border-radius: 10px;
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.alert__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--color-danger);
+  color: var(--color-accent-ink);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.alert__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.field__input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 0.9rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-input);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgb(198 240 78 / 0.18);
+  }
+
+  &--invalid,
+  &--invalid:focus {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 4px rgb(255 143 127 / 0.12);
+  }
+}
+
+.field__password {
+  position: relative;
+
+  .field__input {
+    padding-right: 6.5rem;
+  }
+}
+
+.field__toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.4rem;
+  transform: translateY(-50%);
+  min-height: 2rem;
+  padding: 0 0.6rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+.field__error {
+  color: var(--color-danger);
+  font-size: 0.8rem;
+}
+
+.btn--block {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

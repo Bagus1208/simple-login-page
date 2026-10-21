@@ -1,0 +1,96 @@
+<main class="login">
+  <aside class="login__brand" aria-hidden="true">
+    <p class="login__brand-kicker">Simple Login</p>
+    <h2 class="login__brand-title">Satu pintu masuk, <em>tanpa ribet.</em></h2>
+  </aside>
+
+  <div class="login__main">
+    <section class="login__panel" aria-labelledby="login-title">
+      <header class="login__header">
+        <p class="login__eyebrow">Selamat datang</p>
+        <h1 id="login-title" class="login__title">Masuk ke akun Anda</h1>
+        <p class="login__subtitle">Isi User Server, User ID, dan Password untuk melanjutkan.</p>
+      </header>
+
+      @if (errorMessage(); as message) {
+        <div class="alert" role="alert">
+          <span class="alert__icon" aria-hidden="true">!</span>
+          <p class="alert__text">{{ message }}</p>
+        </div>
+      }
+
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="field">
+          <label class="field__label" for="userServer">User Server</label>
+          <input
+            id="userServer"
+            class="field__input"
+            type="text"
+            formControlName="userServer"
+            autocomplete="organization"
+            autocapitalize="none"
+            spellcheck="false"
+            [attr.aria-invalid]="showError('userServer')"
+            [attr.aria-describedby]="showError('userServer') ? 'userServer-error' : null"
+            [class.field__input--invalid]="showError('userServer')" />
+          @if (showError('userServer')) {
+            <small id="userServer-error" class="field__error">{{ fieldError('userServer') }}</small>
+          }
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="userId">User ID</label>
+          <input
+            id="userId"
+            class="field__input"
+            type="text"
+            formControlName="userId"
+            autocomplete="username"
+            autocapitalize="none"
+            spellcheck="false"
+            [attr.aria-invalid]="showError('userId')"
+            [attr.aria-describedby]="showError('userId') ? 'userId-error' : null"
+            [class.field__input--invalid]="showError('userId')" />
+          @if (showError('userId')) {
+            <small id="userId-error" class="field__error">{{ fieldError('userId') }}</small>
+          }
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="userPassword">Password</label>
+          <div class="field__password">
+            <input
+              id="userPassword"
+              class="field__input"
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="userPassword"
+              autocomplete="current-password"
+              [attr.aria-invalid]="showError('userPassword')"
+              [attr.aria-describedby]="showError('userPassword') ? 'userPassword-error' : null"
+              [class.field__input--invalid]="showError('userPassword')" />
+            <button
+              type="button"
+              class="field__toggle"
+              (click)="togglePassword()"
+              [attr.aria-label]="showPassword() ? 'Sembunyikan password' : 'Tampilkan password'"
+              [attr.aria-pressed]="showPassword()">
+              {{ showPassword() ? 'Sembunyikan' : 'Tampilkan' }}
+            </button>
+          </div>
+          @if (showError('userPassword')) {
+            <small id="userPassword-error" class="field__error">{{ fieldError('userPassword') }}</small>
+          }
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting()" [attr.aria-busy]="submitting()">
+          @if (submitting()) {
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Memproses...</span>
+          } @else {
+            <span>Login</span>
+          }
+        </button>
+      </form>
+    </section>
+  </div>
+</main>
