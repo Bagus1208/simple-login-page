@@ -156,4 +156,17 @@ describe('AuthService', () => {
     expect((error as ApiError).kind).toBe('server');
     expect((error as ApiError).status).toBe(502);
   });
+
+  it('uses a clear fallback message for unhandled HTTP statuses', () => {
+    let error: unknown;
+    service.login(CREDENTIALS).subscribe({ error: (e: unknown) => (error = e) });
+
+    http.expectOne(DEFAULT_API_CONFIG.authUrl).flush({}, { status: 404, statusText: 'Not Found' });
+
+    expect((error as ApiError).kind).toBe('unknown');
+    expect((error as ApiError).status).toBe(404);
+    expect((error as ApiError).message).toBe(
+      'Terjadi kesalahan saat memproses permintaan Anda (HTTP 404). Silakan coba lagi setelah beberapa saat.',
+    );
+  });
 });

@@ -63,7 +63,12 @@ export function toApiError(error: unknown): ApiError {
     return new ApiError('invalidResponse', status, 'Respons server tidak dapat dibaca.');
   }
 
-  return new ApiError('unknown', status, serverMessage ?? `Permintaan gagal (HTTP ${status}).`);
+  return new ApiError(
+    'unknown',
+    status,
+    serverMessage ??
+      `Terjadi kesalahan saat memproses permintaan Anda (HTTP ${status}). Silakan coba lagi setelah beberapa saat.`,
+  );
 }
 
 function extractServerMessage(body: unknown): string | undefined {

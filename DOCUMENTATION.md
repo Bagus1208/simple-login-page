@@ -524,16 +524,16 @@ Perilaku form:
 
 Pemetaan utama ada di `src/app/core/errors/api-error.ts`.
 
-| Kondisi                                                         | `ApiError.kind`   | Pesan yang ditampilkan                                                  |
-| --------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------- |
-| Status HTTP `0`                                                 | `network`         | Tidak dapat terhubung ke server. Periksa koneksi internet.              |
-| HTTP `401` / `403`                                              | `unauthorized`    | `message` dari API, atau “ID pengguna atau password tidak sesuai.”      |
-| HTTP `400` / `422`                                              | `badRequest`      | `message` dari API, atau “Data yang dikirim tidak valid.”               |
-| HTTP `>= 500`                                                   | `server`          | “Server sedang bermasalah (HTTP xxx). Silakan coba beberapa saat lagi.” |
-| HTTP 2xx tetapi body tidak bisa dibaca                          | `invalidResponse` | “Respons server tidak dapat dibaca.”                                    |
-| HTTP 2xx, body kosong / `status` bukan `OK` / token tidak valid | `invalidResponse` | `message` dari API atau “Login gagal: respons server tidak valid.”      |
-| Tidak ada respons dalam 5 detik                                 | `timeout`         | “Server tidak merespons dalam 5 detik. Periksa kembali User Server...”  |
-| Error lain                                                      | `unknown`         | `message` dari API atau “Permintaan gagal (HTTP xxx).”                  |
+| Kondisi                                                         | `ApiError.kind`   | Pesan yang ditampilkan                                                                                                          |
+| --------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Status HTTP `0`                                                 | `network`         | Tidak dapat terhubung ke server. Periksa koneksi internet.                                                                      |
+| HTTP `401` / `403`                                              | `unauthorized`    | `message` dari API, atau “ID pengguna atau password tidak sesuai.”                                                              |
+| HTTP `400` / `422`                                              | `badRequest`      | `message` dari API, atau “Data yang dikirim tidak valid.”                                                                       |
+| HTTP `>= 500`                                                   | `server`          | “Server sedang bermasalah (HTTP xxx). Silakan coba beberapa saat lagi.”                                                         |
+| HTTP 2xx tetapi body tidak bisa dibaca                          | `invalidResponse` | “Respons server tidak dapat dibaca.”                                                                                            |
+| HTTP 2xx, body kosong / `status` bukan `OK` / token tidak valid | `invalidResponse` | `message` dari API atau “Login gagal: respons server tidak valid.”                                                              |
+| Tidak ada respons dalam 5 detik                                 | `timeout`         | “Server tidak merespons dalam 5 detik. Periksa kembali User Server...”                                                          |
+| Error lain                                                      | `unknown`         | `message` dari API atau “Terjadi kesalahan saat memproses permintaan Anda (HTTP xxx). Silakan coba lagi setelah beberapa saat.” |
 
 Di UI:
 
