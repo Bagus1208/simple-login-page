@@ -1,0 +1,28 @@
+<main class="dashboard">
+  <header class="dashboard__bar">
+    <span class="dashboard__brand">Simple Login</span>
+    <button type="button" class="btn btn--ghost" (click)="logout()">Keluar</button>
+  </header>
+
+  @if (user(); as current) {
+    <section class="dashboard__card" aria-labelledby="welcome">
+      <p class="dashboard__eyebrow">Selamat datang</p>
+      <h1 id="welcome" class="dashboard__title">Halo, {{ current.name }}</h1>
+
+      <dl class="dashboard__meta">
+        <div>
+          <dt>ID Pengguna</dt>
+          <dd>{{ current.id }}</dd>
+        </div>
+        <div>
+          <dt>Jabatan</dt>
+          <dd>{{ current.jabatanName }}</dd>
+        </div>
+        <div>
+          <dt>Cabang</dt>
+          <dd>{{ current.branchName }}</dd>
+        </div>
+      </dl>
+    </section>
+  }
+</main>
