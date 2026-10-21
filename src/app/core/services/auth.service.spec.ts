@@ -166,7 +166,7 @@ describe('AuthService', () => {
     expect((error as ApiError).kind).toBe('unknown');
     expect((error as ApiError).status).toBe(404);
     expect((error as ApiError).message).toBe(
-      'Terjadi kesalahan saat memproses permintaan Anda (HTTP 404). Silakan coba lagi setelah beberapa saat.',
+      'Terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi setelah beberapa saat.',
     );
   });
 });

@@ -67,7 +67,7 @@ export function toApiError(error: unknown): ApiError {
     'unknown',
     status,
     serverMessage ??
-      `Terjadi kesalahan saat memproses permintaan Anda (HTTP ${status}). Silakan coba lagi setelah beberapa saat.`,
+      'Terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi setelah beberapa saat.',
   );
 }
 
